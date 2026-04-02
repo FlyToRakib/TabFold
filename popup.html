@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <span class="logo-icon">📂</span> TabFold
+    </div>
+    <button id="settingsBtn" title="Settings" class="icon-btn">⚙️</button>
+  </header>
+
+  <main>
+    <div class="grid-actions">
+      <button id="groupTabsBtn" class="primary-btn">Group by Domain</button>
+      <button id="suspendOthersBtn" class="secondary-btn">Suspend Inactive</button>
+      <button id="destroyDupsBtn" class="secondary-btn">Close Duplicates</button>
+    </div>
+
+    <hr>
+
+    <div class="io-section">
+      <div class="io-controls">
+        <select id="exportFormat">
+          <option value="markdown">Markdown</option>
+          <option value="text">Plain Text</option>
+          <option value="csv">CSV</option>
+          <option value="html">HTML</option>
+        </select>
+        <div class="action-row">
+          <button id="exportBtn" class="outline-btn">Copy Out</button>
+          <button id="importBtn" class="outline-btn">Paste & Open</button>
+        </div>
+      </div>
+      <textarea id="ioArea" placeholder="URLs will appear here, or paste a list of URLs to open them..."></textarea>
+    </div>
+    <div id="statusMessage" class="hidden"></div>
+  </main>
+
+  <script src="popup.js"></script>
+</body>
+</html>

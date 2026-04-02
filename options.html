@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>TabFold Options</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1><span class="logo-icon">📂</span> TabFold Settings</h1>
+    </header>
+
+    <main>
+      <section class="card">
+        <h2>Smart Filters & Toggles</h2>
+        <div class="toggle-group">
+          <label>
+            <input type="checkbox" id="activeWindowOnly"> 
+            Target active window only (for exports & groupings)
+          </label>
+          <label>
+            <input type="checkbox" id="excludePinned"> 
+            Exclude pinned tabs from grouping, exports, and suspension
+          </label>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Auto-Suspend Timer</h2>
+        <p>Suspend inactive tabs automatically to save RAM. Set to 0 to disable.</p>
+        <div class="input-row">
+          <input type="number" id="suspendTimer" min="0" placeholder="Minutes">
+          <span>minutes</span>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Domain Whitelist</h2>
+        <p>Sites that will <strong>never</strong> be suspended. Add one domain per line (e.g., <code>spotify.com</code>).</p>
+        <textarea id="whitelistArea" placeholder="mail.google.com&#10;open.spotify.com"></textarea>
+      </section>
+
+      <button id="saveSettingsBtn" class="primary-btn">Save Settings</button>
+      <div id="saveStatus" class="hidden status">Settings saved!</div>
+
+      <section class="card mt-4">
+        <h2>Session Management</h2>
+        <p>Save your current open tabs to restore them later.</p>
+        <div class="input-row">
+          <input type="text" id="sessionName" placeholder="e.g., Project Research">
+          <button id="saveSessionBtn" class="primary-btn">Save Current Session</button>
+        </div>
+        <ul id="sessionsList"></ul>
+      </section>
+    </main>
+  </div>
+  <script src="options.js"></script>
+</body>
+</html>
