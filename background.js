@@ -18,22 +18,17 @@ chrome.alarms.onAlarm.addListener(async (alarm) => {
       const suspendThreshold = suspendTimer * 60 * 1000;
 
       for (const tab of tabs) {
-        // Skip active tabs, already discarded tabs, or tabs playing audio
         if (tab.active || tab.discarded || tab.audible) continue;
-        
-        // Skip pinned tabs if setting is enabled
         if (excludePinned && tab.pinned) continue;
 
-        // Skip whitelisted domains
         try {
           const urlObj = new URL(tab.url);
           const isWhitelisted = whitelist.some(domain => urlObj.hostname.includes(domain));
           if (isWhitelisted) continue;
         } catch(e) {
-          continue; // Skip invalid URLs like chrome://
+          continue; 
         }
 
-        // Check inactivity duration
         if (tab.lastAccessed && (now - tab.lastAccessed > suspendThreshold)) {
           chrome.tabs.discard(tab.id);
         }
@@ -55,7 +50,6 @@ chrome.commands.onCommand.addListener(async (command) => {
       const tabs = await chrome.tabs.query(queryParams);
       const markdown = tabs.map(t => `[${t.title}](${t.url})`).join("\n");
 
-      // Inject script into active tab to write to clipboard (Service Workers lack DOM access)
       const [activeTab] = await chrome.tabs.query({ active: true, currentWindow: true });
       if (activeTab && !activeTab.url.startsWith("chrome://")) {
         chrome.scripting.executeScript({

@@ -1,9 +1,9 @@
 :root {
   --brand-dark: #002719;
   --brand-lime: #AEED22;
-  --brand-lime-hover: #c4fb46;
   --bg: #f3f4f6;
   --card-bg: #ffffff;
+  --surface: #f9fafb;
   --text: #1f2937;
   --text-muted: #6b7280;
   --border: #e5e7eb;
@@ -13,9 +13,10 @@
   :root {
     --bg: #111827;
     --card-bg: #1f2937;
+    --surface: #374151;
     --text: #f9fafb;
     --text-muted: #9ca3af;
-    --border: #374151;
+    --border: #4b5563;
   }
 }
 
@@ -38,9 +39,6 @@ header h1 {
   font-size: 24px;
   margin-bottom: 24px;
   color: var(--text);
-  display: flex;
-  align-items: center;
-  gap: 12px;
 }
 
 .card {
@@ -52,14 +50,10 @@ header h1 {
   box-shadow: 0 1px 3px rgba(0,0,0,0.05);
 }
 
-.mt-4 {
-  margin-top: 32px;
-}
+.mt-4 { margin-top: 32px; }
 
-h2 {
-  font-size: 16px;
-  margin: 0 0 8px 0;
-}
+h2 { font-size: 16px; margin: 0 0 8px 0; }
+h3 { font-size: 14px; margin: 0 0 4px 0; }
 
 p {
   font-size: 14px;
@@ -75,6 +69,12 @@ p {
   cursor: pointer;
 }
 
+.divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 20px 0;
+}
+
 .input-row {
   display: flex;
   align-items: center;
@@ -82,11 +82,17 @@ p {
   margin-bottom: 16px;
 }
 
+.save-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
 input[type="number"], input[type="text"], textarea {
   padding: 10px;
   border-radius: 6px;
   border: 1px solid var(--border);
-  background-color: var(--bg);
+  background-color: var(--surface);
   color: var(--text);
   font-family: inherit;
   width: 100%;
@@ -97,49 +103,35 @@ input[type="number"] { width: 120px; }
 textarea { height: 100px; resize: vertical; }
 
 input:focus, textarea:focus {
-  outline: 2px solid var(--brand-lime);
+  outline: none;
+  border-color: var(--brand-lime);
 }
 
-button {
+/* Neutral Buttons with fixed Lime Hover state */
+button.action-btn {
   font-family: inherit;
   font-weight: 600;
   border-radius: 6px;
   padding: 10px 20px;
   cursor: pointer;
-  border: none;
-  transition: background-color 0.2s;
-}
-
-.primary-btn {
-  background-color: var(--brand-dark);
-  color: var(--brand-lime);
-}
-
-.primary-btn:hover {
-  background-color: #001c12;
-  color: var(--brand-lime-hover);
-}
-
-@media (prefers-color-scheme: dark) {
-  .primary-btn {
-    background-color: var(--brand-lime);
-    color: var(--brand-dark);
-  }
-  .primary-btn:hover {
-    background-color: var(--brand-lime-hover);
-  }
-}
-
-.outline-btn {
-  background: transparent;
-  border: 1px solid var(--text-muted);
+  background-color: var(--surface);
   color: var(--text);
-  padding: 6px 12px;
-  font-size: 12px;
+  border: 1px solid var(--border);
+  transition: all 0.2s ease;
 }
-.outline-btn:hover { border-color: red; color: red; }
 
-.status { margin-top: 12px; color: #10b981; font-weight: bold; }
+button.action-btn:hover {
+  background-color: var(--brand-lime);
+  color: #002719; /* Fixed text blending issue */
+  border-color: var(--brand-lime);
+}
+
+.save-btn {
+  padding: 12px 32px;
+  font-size: 16px;
+}
+
+.status { color: #10b981; font-weight: bold; font-size: 14px; }
 .hidden { display: none; }
 
 /* Sessions List */
@@ -159,5 +151,26 @@ button {
 .session-info strong { display: block; font-size: 14px; }
 .session-info span { font-size: 12px; color: var(--text-muted); }
 .session-actions { display: flex; gap: 8px; }
-.session-actions button.restore { border-color: var(--brand-lime); color: var(--text); }
-.session-actions button.restore:hover { background: var(--brand-lime); color: var(--brand-dark); }
+
+button.outline-btn {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 6px 12px;
+  font-size: 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+button.outline-btn:hover {
+  background-color: var(--brand-lime);
+  color: #002719;
+  border-color: var(--brand-lime);
+}
+
+button.outline-btn.delete-btn:hover {
+  background-color: #ef4444;
+  color: white;
+  border-color: #ef4444;
+}

@@ -6,17 +6,24 @@
 </head>
 <body>
   <header>
-    <div class="logo">
-      <span class="logo-icon">📂</span> TabFold
+    <div class="header-top">
+      <div class="logo">TabFold</div>
+      <button id="settingsBtn" title="Settings" class="icon-btn">⚙️</button>
     </div>
-    <button id="settingsBtn" title="Settings" class="icon-btn">⚙️</button>
+    <hr class="header-divider">
+    <div class="tagline">One-click tab management. Organize, group,<br>export, and suspend tabs to save memory and focus.</div>
   </header>
 
   <main>
     <div class="grid-actions">
-      <button id="groupTabsBtn" class="primary-btn">Group by Domain</button>
-      <button id="suspendOthersBtn" class="secondary-btn">Suspend Inactive</button>
-      <button id="destroyDupsBtn" class="secondary-btn">Close Duplicates</button>
+      <button id="groupTabsBtn" class="action-btn">Group by Domain</button>
+      <button id="suspendOthersBtn" class="action-btn">Suspend Inactive</button>
+      <button id="destroyDupsBtn" class="action-btn">Close Duplicates</button>
+    </div>
+
+    <div id="popupSessionsSection" class="hidden">
+      <hr class="session-divider">
+      <ul id="popupSessionsList" class="scrollable-list"></ul>
     </div>
 
     <hr>
@@ -30,8 +37,8 @@
           <option value="html">HTML</option>
         </select>
         <div class="action-row">
-          <button id="exportBtn" class="outline-btn">Copy Out</button>
-          <button id="importBtn" class="outline-btn">Paste & Open</button>
+          <button id="exportBtn" class="action-btn">Copy Out</button>
+          <button id="importBtn" class="action-btn">Paste & Open</button>
         </div>
       </div>
       <textarea id="ioArea" placeholder="URLs will appear here, or paste a list of URLs to open them..."></textarea>

@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
   const groupTabsBtn = document.getElementById('groupTabsBtn');
   const suspendOthersBtn = document.getElementById('suspendOthersBtn');
   const destroyDupsBtn = document.getElementById('destroyDupsBtn');
@@ -8,6 +8,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const ioArea = document.getElementById('ioArea');
   const exportFormat = document.getElementById('exportFormat');
   const statusMessage = document.getElementById('statusMessage');
+  const popupSessionsSection = document.getElementById('popupSessionsSection');
+  const popupSessionsList = document.getElementById('popupSessionsList');
 
   const chromeColors = ['grey', 'blue', 'red', 'yellow', 'green', 'pink', 'purple', 'cyan'];
 
@@ -25,11 +27,46 @@ document.addEventListener('DOMContentLoaded', () => {
     return tabs;
   }
 
+  async function loadSessions() {
+    const { sessions } = await chrome.storage.local.get({ sessions: [] });
+    if (!sessions || sessions.length === 0) {
+      popupSessionsSection.classList.add('hidden');
+      return;
+    }
+    
+    popupSessionsSection.classList.remove('hidden');
+    popupSessionsList.innerHTML = '';
+    
+    // Reverse array to show newly added sessions at the top
+    const reversedSessions = [...sessions].reverse();
+    
+    reversedSessions.forEach(session => {
+      const li = document.createElement('li');
+      li.className = 'popup-session-item';
+      li.innerHTML = `
+        <span class="session-title-text" title="${session.name}">${session.name}</span>
+        <button class="restore-btn" data-id="${session.id}">Restore</button>
+      `;
+      popupSessionsList.appendChild(li);
+    });
+
+    popupSessionsList.querySelectorAll('.restore-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const id = parseInt(e.target.getAttribute('data-id'));
+        const session = sessions.find(s => s.id === id);
+        if (session) {
+          chrome.windows.create({ url: session.tabs.map(t => t.url) });
+        }
+      });
+    });
+  }
+
+  loadSessions();
+
   settingsBtn.addEventListener('click', () => {
     chrome.runtime.openOptionsPage();
   });
 
-  // Feature 1: Domain Grouping
   groupTabsBtn.addEventListener('click', async () => {
     try {
       const tabs = await getTargetTabs();
@@ -45,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
 
       for (const [domain, tabIds] of Object.entries(domainMap)) {
-        if (tabIds.length > 1) { // Only group if multiple tabs share the domain
+        if (tabIds.length > 1) { 
           const groupId = await chrome.tabs.group({ tabIds });
           const randomColor = chromeColors[Math.floor(Math.random() * chromeColors.length)];
           await chrome.tabGroups.update(groupId, { title: domain, color: randomColor });
@@ -58,7 +95,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Feature 3: Suspend Inactive (Manual trigger)
   suspendOthersBtn.addEventListener('click', async () => {
     try {
       const tabs = await chrome.tabs.query({ active: false });
@@ -86,7 +122,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Feature 4: Destroy Duplicates
   destroyDupsBtn.addEventListener('click', async () => {
     try {
       const tabs = await getTargetTabs();
@@ -109,7 +144,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Feature 2: Export Tabs
   exportBtn.addEventListener('click', async () => {
     try {
       const tabs = await getTargetTabs();
@@ -135,10 +169,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Feature 2: Import & Open Tabs
   importBtn.addEventListener('click', () => {
     const input = ioArea.value;
-    // Regex matches common URLs
     const urlRegex = /https?:\/\/[^\s"'<>\])]+/g;
     const urls = input.match(urlRegex);
 

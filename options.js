@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     setTimeout(() => saveStatus.classList.add('hidden'), 2500);
   });
 
-  // Feature 4: Session Saving
+  // Session Saving
   saveSessionBtn.addEventListener('click', async () => {
     const name = sessionName.value.trim() || `Session ${new Date().toLocaleString()}`;
     const tabs = await chrome.tabs.query({ currentWindow: true });
@@ -58,7 +58,11 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   function renderSessions(sessions) {
     sessionsList.innerHTML = '';
-    sessions.forEach(session => {
+    
+    // Reverse array to show newest sessions at the top
+    const reversedSessions = [...sessions].reverse();
+    
+    reversedSessions.forEach(session => {
       const li = document.createElement('li');
       li.className = 'session-item';
       
@@ -77,7 +81,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       });
 
       const delBtn = document.createElement('button');
-      delBtn.className = 'outline-btn';
+      delBtn.className = 'outline-btn delete-btn';
       delBtn.textContent = 'Delete';
       delBtn.addEventListener('click', async () => {
         const { sessions: currentSessions } = await chrome.storage.local.get({ sessions: [] });

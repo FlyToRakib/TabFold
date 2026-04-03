@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>TabFold Options</title>
+  <title>TabFold Settings</title>
   <link rel="stylesheet" href="options.css">
 </head>
 <body>
   <div class="container">
     <header>
-      <h1><span class="logo-icon">📂</span> TabFold Settings</h1>
+      <h1>TabFold Settings</h1>
     </header>
 
     <main>
@@ -37,19 +37,22 @@
 
       <section class="card">
         <h2>Domain Whitelist</h2>
-        <p>Sites that will <strong>never</strong> be suspended. Add one domain per line (e.g., <code>spotify.com</code>).</p>
-        <textarea id="whitelistArea" placeholder="mail.google.com&#10;open.spotify.com"></textarea>
+        <p>Sites that will <strong>never</strong> be suspended. Add one domain per line.</p>
+        <textarea id="whitelistArea" placeholder="mail.google.com
+open.spotify.com"></textarea>
       </section>
 
-      <button id="saveSettingsBtn" class="primary-btn">Save Settings</button>
-      <div id="saveStatus" class="hidden status">Settings saved!</div>
+      <div class="save-row">
+        <button id="saveSettingsBtn" class="action-btn save-btn">Save Settings</button>
+        <span id="saveStatus" class="hidden status">Settings saved!</span>
+      </div>
 
       <section class="card mt-4">
         <h2>Session Management</h2>
         <p>Save your current open tabs to restore them later.</p>
         <div class="input-row">
           <input type="text" id="sessionName" placeholder="e.g., Project Research">
-          <button id="saveSessionBtn" class="primary-btn">Save Current Session</button>
+          <button id="saveSessionBtn" class="action-btn">Save Current Session</button>
         </div>
         <ul id="sessionsList"></ul>
       </section>
