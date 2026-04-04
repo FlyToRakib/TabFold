@@ -1,8 +1,9 @@
 {
   "manifest_version": 3,
-  "name": "TabFold",
+  "name": "TabFold - Smart Tab Manager",
+  "short_name": "TabFold",
   "version": "1.0.0",
-  "description": "Powerful, one-click tab management. Organize, export, and suspend tabs to save memory and focus.",
+  "description": "Powerful tab manager. Organize, group, auto-suspend to save memory, and export URLs in one click. Boost focus and productivity.",
   "permissions": [
     "tabs",
     "tabGroups",

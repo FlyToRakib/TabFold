@@ -1,37 +1,31 @@
 # 📂 TabFold
 
-**A powerful, one-click tab management tool that organizes, exports, and suspends tabs to save memory and keep you focused.**
+**Powerful, one-click tab management. Organize, group, export, and suspend tabs to save memory and focus.**
 
-Tab overload kills focus and bloats browser memory usage. TabFold is a lightweight, strictly native Manifest V3 extension designed to help you organize scattered tabs, save browsing sessions, and share multiple links cleanly without the bloat of heavy extensions.
+TabFold is a lightweight, strictly native Manifest V3 Chrome extension designed to solve tab overload. It operates 100% locally on your machine, requiring no external accounts, servers, or bloatware. 
 
-## ✨ Features
+## Features
+* **Smart Grouping:** One click to gather scattered tabs into colored Chrome Tab Groups by domain.
+* **Auto-Suspend:** Set a timer to automatically discard inactive tabs, freeing up massive amounts of system RAM.
+* **Session Saving:** Save your current tabs as a session and restore them later.
+* **Clean Exports:** Copy all open tabs to your clipboard in Markdown, CSV, HTML, or Plain Text.
+* **Paste & Open:** Paste a list of URLs to instantly open them all.
+* **Duplicate Destroyer:** Instantly close all duplicate tabs.
+* **Power Settings:** Create a whitelist of domains that never get suspended, and use smart toggles to ignore pinned tabs.
 
-* **One-Click Domain Grouping:** Automatically gather scattered tabs from the same website into Chrome's native Tab Groups with customized colors.
-* **Robust Export & Import:** Instantly copy all open tabs to your clipboard in Markdown (`[Title](URL)`), Plain Text, CSV, or HTML. 
-* **Reverse Import:** Paste a list of URLs directly into TabFold to instantly open them in the background.
-* **Memory Saver & Auto-Suspend:** Instantly discard inactive tabs to free up RAM. Set up an Auto-Suspend Timer to automatically put tabs to sleep after a set period of inactivity.
-* **Session Management:** Save the current state of your window and restore that exact group of tabs later with a single click.
-* **Duplicate Destroyer:** Automatically detect and close duplicate tabs with the exact same URL.
-* **Smart Filters & Whitelisting:** Exclude pinned tabs, target only the active window, and whitelist specific domains (like Spotify or Gmail) so they are never suspended.
-* **Keyboard Shortcuts:** Built-in shortcut support (e.g., `Ctrl+Shift+M` / `Cmd+Shift+M` to instantly export the active window's tabs to Markdown).
+## Installation (Developer Mode)
+1. Clone or download this repository.
+2. Open Chrome and navigate to `chrome://extensions/`.
+3. Enable **Developer mode** in the top right corner.
+4. Click **Load unpacked** and select the folder containing the extension files.
+5. Pin TabFold to your toolbar for easy access.
 
-## 🚀 Installation (Developer Mode)
+## Keyboard Shortcuts
+* `Ctrl+Shift+E` (Mac: `Cmd+Shift+E`): Open TabFold Menu
+* `Ctrl+Shift+M` (Mac: `Cmd+Shift+M`): Quick Export active tabs to Clipboard as Markdown
 
-1. Clone or download this repository to your local machine.
-2. Open Google Chrome and navigate to `chrome://extensions/`.
-3. Enable **Developer mode** using the toggle switch in the top right corner.
-4. Click the **Load unpacked** button in the top left.
-5. Select the directory where you saved the TabFold files.
-6. Pin TabFold to your toolbar for easy access!
+## Privacy & Security
+TabFold respects your privacy. It processes all tab data locally within your browser. No analytics, no tracking, and no external API calls are made. 
 
-## ⌨️ Keyboard Shortcuts
-
-* **Open TabFold:** `Ctrl+Shift+E` (Mac: `Cmd+Shift+E`)
-* **Quick Markdown Export:** `Ctrl+Shift+M` (Mac: `Cmd+Shift+M`)
-*(Shortcuts can be customized in Chrome via `chrome://extensions/shortcuts`)*
-
-## 🛠️ Built With
-* Manifest V3
-* Vanilla JavaScript
-* HTML5 / CSS3 (CSS Variables for Light/Dark Mode)
-* Chrome Extension APIs (`tabs`, `tabGroups`, `storage`, `alarms`, `scripting`)
+## License
+MIT License.
