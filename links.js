@@ -7,7 +7,8 @@ const APP_LINKS = {
   reviewUs: "https://chromewebstore.google.com/detail/tabfold-smart-tab-manager/jpooejlfphlenpoeoebhclmmloifgafh/reviews",
   moreTools: "https://chromewebstore.google.com/search/degird",
   privacy: "https://docs.google.com/document/d/1Z__3yycKBlSzL-kQMa3iTrqh4Hj-kyOEIQqBWtydzSQ/edit?usp=sharing",
-  support: "https://degird.com/support"
+  support: "https://degird.com/support",
+  userGuide: "https://wpinlearn.com/how-to-use-tabfold-smart-tab-manager-extension"
 };
 
 function initDynamicLinks() {

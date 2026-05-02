@@ -7,11 +7,13 @@ TabFold is a lightweight, strictly native Manifest V3 Chrome extension designed 
 ## Features
 * **Smart Grouping:** One click to gather scattered tabs into colored Chrome Tab Groups by domain.
 * **Auto-Suspend:** Set a timer to automatically discard inactive tabs, freeing up massive amounts of system RAM.
-* **Session Saving:** Save your current tabs as a session and restore them later.
+* **Session Saving:** Save your current tabs as a named session from the popup or settings page, and restore them later with one click.
 * **Clean Exports:** Copy all open tabs to your clipboard in Markdown, CSV, HTML, or Plain Text.
 * **Paste & Open:** Paste a list of URLs to instantly open them all.
 * **Duplicate Destroyer:** Instantly close all duplicate tabs.
 * **Power Settings:** Create a whitelist of domains that never get suspended, and use smart toggles to ignore pinned tabs.
+* **Dynamic Link Management:** All outbound links are centralized in `links.js` for easy maintenance.
+* **Unified Dark UI:** Consistent `#111827` dark theme with lime green accents across popup and options pages.
 
 ## Installation (Developer Mode)
 1. Clone or download this repository.
