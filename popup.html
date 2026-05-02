@@ -7,22 +7,29 @@
 <body>
   <header>
     <div class="header-top">
-      <div class="logo">TabFold</div>
-      <button id="settingsBtn" title="Settings" class="icon-btn">⚙️</button>
+      <span class="logo">TabFold</span>
+      <span class="powered-by">POWERED BY <a data-link="degirdHome" href="#" target="_blank" class="degird-link">DEGIRD</a></span>
+      <button id="settingsBtn" title="Settings" class="icon-btn"><svg class="gear-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></button>
     </div>
-    <hr class="header-divider">
-    <div class="tagline">One-click tab management. Organize, group,<br>export, and suspend tabs to save memory and focus.</div>
   </header>
 
   <main>
     <div class="grid-actions">
-      <button id="groupTabsBtn" class="action-btn">Group by Domain</button>
-      <button id="suspendOthersBtn" class="action-btn">Suspend Inactive</button>
+      <div class="action-row-pair">
+        <button id="groupTabsBtn" class="action-btn">Group by Domain</button>
+        <button id="suspendOthersBtn" class="action-btn">Suspend Inactive</button>
+      </div>
       <button id="destroyDupsBtn" class="action-btn">Close Duplicates</button>
     </div>
 
+    <hr>
+
+    <div class="session-save-row">
+      <input type="text" id="popupSessionName" class="session-name-input" placeholder="Session name...">
+      <button id="saveSessionBtn" class="action-btn session-save-btn">Save Session</button>
+    </div>
+
     <div id="popupSessionsSection" class="hidden">
-      <hr class="session-divider">
       <ul id="popupSessionsList" class="scrollable-list"></ul>
     </div>
 
@@ -46,6 +53,15 @@
     <div id="statusMessage" class="hidden"></div>
   </main>
 
+  <footer>
+    <div class="footer-links">
+      <a data-link="reviewUs" href="#" target="_blank">REVIEW US</a>
+      <a data-link="moreTools" href="#" target="_blank">MORE TOOLS</a>
+      <a data-link="support" href="#" target="_blank">SUPPORT</a>
+    </div>
+  </footer>
+
+  <script src="links.js"></script>
   <script src="popup.js"></script>
 </body>
 </html>

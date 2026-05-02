@@ -14,7 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Session Manager:** Save the current window's tabs as a named session and restore them later with one click.
 - **Duplicate Destroyer:** One-click button to find and close tabs with identical URLs.
 - **Smart Filters:** Toggles to target only the active window and to exclude pinned tabs from actions.
-- **Keyboard Shortcuts:** `Ctrl+Shift+E` (Open Menu) and `Ctrl+Shift+M` (Quick Markdown Export).
+- **Keyboard Shortcut:** `Alt+Shift+F` (Open Menu).
 
 ### Changed
 - Streamlined settings dashboard for a cleaner user experience.

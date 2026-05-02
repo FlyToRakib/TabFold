@@ -1,4 +1,22 @@
 document.addEventListener('DOMContentLoaded', async () => {
+  // ── Tab Navigation ──
+  const navLinks = document.querySelectorAll('.nav-link');
+  const panels = document.querySelectorAll('.panel');
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const target = link.getAttribute('data-nav');
+
+      navLinks.forEach(l => l.classList.remove('active'));
+      link.classList.add('active');
+
+      panels.forEach(p => p.classList.remove('active'));
+      const targetPanel = document.getElementById(`panel-${target}`);
+      if (targetPanel) targetPanel.classList.add('active');
+    });
+  });
+
   const activeWindowOnly = document.getElementById('activeWindowOnly');
   const excludePinned = document.getElementById('excludePinned');
   const suspendTimer = document.getElementById('suspendTimer');
@@ -97,4 +115,11 @@ document.addEventListener('DOMContentLoaded', async () => {
       sessionsList.appendChild(li);
     });
   }
+
+  // Auto-refresh sessions when storage changes (e.g. session saved from popup)
+  chrome.storage.onChanged.addListener((changes, area) => {
+    if (area === 'local' && changes.sessions) {
+      renderSessions(changes.sessions.newValue || []);
+    }
+  });
 });

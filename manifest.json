@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "TabFold - Smart Tab Manager",
   "short_name": "TabFold",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Powerful tab manager. Organize, group, auto-suspend to save memory, and export URLs in one click. Boost focus and productivity.",
   "permissions": [
     "tabs",
@@ -26,20 +26,12 @@
   "commands": {
     "_execute_action": {
       "suggested_key": {
-        "default": "Ctrl+Shift+E",
-        "mac": "Command+Shift+E"
+        "default": "Alt+Shift+F"
       },
       "description": "Open TabFold popup"
-    },
-    "export-markdown": {
-      "suggested_key": {
-        "default": "Ctrl+Shift+M",
-        "mac": "Command+Shift+M"
-      },
-      "description": "Quickly export active window tabs to Markdown"
     }
   },
-   "icons": {
+  "icons": {
     "16": "assets/icon16.png",
     "32": "assets/icon32.png",
     "48": "assets/icon48.png",

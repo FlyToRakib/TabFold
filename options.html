@@ -1,63 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>TabFold Settings</title>
   <link rel="stylesheet" href="options.css">
 </head>
+
 <body>
-  <div class="container">
-    <header>
-      <h1>TabFold Settings</h1>
-    </header>
+  <header>
+    <span class="logo">TabFold</span>
+    <nav class="header-nav">
+      <a href="#settings" class="nav-link active" data-nav="settings">Settings</a>
+      <a href="#sessions" class="nav-link" data-nav="sessions">Sessions</a>
+    </nav>
+    <span class="powered-by">POWERED BY <a data-link="degirdHome" href="#" target="_blank"
+        class="degird-link">DEGIRD</a></span>
+  </header>
 
+  <div class="page-wrapper">
     <main>
-      <section class="card">
-        <h2>Smart Filters & Toggles</h2>
-        <div class="toggle-group">
-          <label>
-            <input type="checkbox" id="activeWindowOnly"> 
-            Target active window only (for exports & groupings)
-          </label>
-          <label>
-            <input type="checkbox" id="excludePinned"> 
-            Exclude pinned tabs from grouping, exports, and suspension
-          </label>
-        </div>
-      </section>
+      <!-- NAV1: Settings Panel -->
+      <div id="panel-settings" class="panel active">
+        <div class="body-text">Take control of your focus by setting daily browsing limits for distracting websites. Use
+          the global shortcut Alt+Shift+F to quickly access this interface.</div>
 
-      <section class="card">
-        <h2>Auto-Suspend Timer</h2>
-        <p>Suspend inactive tabs automatically to save RAM. Set to 0 to disable.</p>
-        <div class="input-row">
-          <input type="number" id="suspendTimer" min="0" placeholder="Minutes">
-          <span>minutes</span>
-        </div>
-      </section>
+        <section class="card">
+          <h2>Smart Filters & Toggles</h2>
+          <div class="toggle-group">
+            <label>
+              <input type="checkbox" id="activeWindowOnly">
+              Target active window only (for exports & groupings)
+            </label>
+            <label>
+              <input type="checkbox" id="excludePinned">
+              Exclude pinned tabs from grouping, exports, and suspension
+            </label>
+          </div>
+        </section>
 
-      <section class="card">
-        <h2>Domain Whitelist</h2>
-        <p>Sites that will <strong>never</strong> be suspended. Add one domain per line.</p>
-        <textarea id="whitelistArea" placeholder="mail.google.com
+        <section class="card">
+          <h2>Auto-Suspend Timer</h2>
+          <p>Suspend inactive tabs automatically to save RAM. Set to 0 to disable.</p>
+          <div class="input-row">
+            <input type="number" id="suspendTimer" min="0" placeholder="Minutes">
+            <span>minutes</span>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2>Domain Whitelist</h2>
+          <p>Sites that will <strong>never</strong> be suspended. Add one domain per line.</p>
+          <textarea id="whitelistArea" placeholder="mail.google.com
 open.spotify.com"></textarea>
-      </section>
+        </section>
 
-      <div class="save-row">
-        <button id="saveSettingsBtn" class="action-btn save-btn">Save Settings</button>
-        <span id="saveStatus" class="hidden status">Settings saved!</span>
+        <div class="save-row">
+          <button id="saveSettingsBtn" class="action-btn save-btn">Save Settings</button>
+          <span id="saveStatus" class="hidden status">Settings saved!</span>
+        </div>
       </div>
 
-      <section class="card mt-4">
-        <h2>Session Management</h2>
-        <p>Save your current open tabs to restore them later.</p>
-        <div class="input-row">
-          <input type="text" id="sessionName" placeholder="e.g., Project Research">
-          <button id="saveSessionBtn" class="action-btn">Save Current Session</button>
-        </div>
-        <ul id="sessionsList"></ul>
-      </section>
+      <!-- NAV2: Sessions Panel -->
+      <div id="panel-sessions" class="panel">
+        <section class="card">
+          <h2>Session Management</h2>
+          <p>Save your current open tabs to restore them later.</p>
+          <div class="input-row">
+            <input type="text" id="sessionName" placeholder="e.g., Project Research">
+            <button id="saveSessionBtn" class="action-btn">Save Session</button>
+          </div>
+          <ul id="sessionsList"></ul>
+        </section>
+      </div>
     </main>
   </div>
+
+  <footer>
+    <div class="footer-links">
+      <a data-link="reviewUs" href="#" target="_blank">REVIEW US</a>
+      <a data-link="moreTools" href="#" target="_blank">MORE TOOLS</a>
+      <a data-link="privacy" href="#" target="_blank">PRIVACY</a>
+      <a data-link="support" href="#" target="_blank">SUPPORT</a>
+    </div>
+    <div class="footer-copy">&copy; 2026 TABFOLD</div>
+  </footer>
+
+  <script src="links.js"></script>
   <script src="options.js"></script>
 </body>
+
 </html>

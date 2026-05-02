@@ -21,8 +21,7 @@ TabFold is a lightweight, strictly native Manifest V3 Chrome extension designed 
 5. Pin TabFold to your toolbar for easy access.
 
 ## Keyboard Shortcuts
-* `Ctrl+Shift+E` (Mac: `Cmd+Shift+E`): Open TabFold Menu
-* `Ctrl+Shift+M` (Mac: `Cmd+Shift+M`): Quick Export active tabs to Clipboard as Markdown
+* `Alt+Shift+F`: Open TabFold Menu
 
 ## Privacy & Security
 TabFold respects your privacy. It processes all tab data locally within your browser. No analytics, no tracking, and no external API calls are made. 

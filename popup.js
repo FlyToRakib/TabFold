@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const exportBtn = document.getElementById('exportBtn');
   const importBtn = document.getElementById('importBtn');
   const settingsBtn = document.getElementById('settingsBtn');
+  const saveSessionBtn = document.getElementById('saveSessionBtn');
   const ioArea = document.getElementById('ioArea');
   const exportFormat = document.getElementById('exportFormat');
   const statusMessage = document.getElementById('statusMessage');
@@ -65,6 +66,28 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   settingsBtn.addEventListener('click', () => {
     chrome.runtime.openOptionsPage();
+  });
+
+  // Save Session from popup
+  const popupSessionName = document.getElementById('popupSessionName');
+
+  saveSessionBtn.addEventListener('click', async () => {
+    try {
+      const tabs = await chrome.tabs.query({ currentWindow: true });
+      const savedTabs = tabs.map(t => ({ url: t.url, title: t.title }));
+      const name = popupSessionName.value.trim() || `Session ${new Date().toLocaleString()}`;
+
+      const currentPrefs = await chrome.storage.local.get({ sessions: [] });
+      const updatedSessions = [...currentPrefs.sessions, { id: Date.now(), name, tabs: savedTabs }];
+
+      await chrome.storage.local.set({ sessions: updatedSessions });
+      popupSessionName.value = '';
+      showStatus(`Saved ${savedTabs.length} tabs as session.`);
+      loadSessions();
+    } catch (e) {
+      console.error(e);
+      showStatus('Error saving session.');
+    }
   });
 
   groupTabsBtn.addEventListener('click', async () => {

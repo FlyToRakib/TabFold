@@ -38,28 +38,4 @@ chrome.alarms.onAlarm.addListener(async (alarm) => {
     }
   }
 });
-
-// Handle keyboard shortcuts
-chrome.commands.onCommand.addListener(async (command) => {
-  if (command === "export-markdown") {
-    try {
-      const { excludePinned } = await chrome.storage.local.get({ excludePinned: true });
-      const queryParams = { currentWindow: true };
-      if (excludePinned) queryParams.pinned = false;
-
-      const tabs = await chrome.tabs.query(queryParams);
-      const markdown = tabs.map(t => `[${t.title}](${t.url})`).join("\n");
-
-      const [activeTab] = await chrome.tabs.query({ active: true, currentWindow: true });
-      if (activeTab && !activeTab.url.startsWith("chrome://")) {
-        chrome.scripting.executeScript({
-          target: { tabId: activeTab.id },
-          func: (text) => navigator.clipboard.writeText(text),
-          args: [markdown]
-        });
-      }
-    } catch (err) {
-      console.error("TabFold Export Error:", err);
-    }
-  }
-});
+
